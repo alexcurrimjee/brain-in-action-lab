@@ -1,11 +1,12 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer class="footer">
   <div class="footer__inner">
     <div class="footer__brand">
 
-        <img src="/images/brain.svg" alt="Brain in Action Lab" class="footer__logo" />
+        <img src={`${base}images/brain.svg`} alt="Brain in Action Lab" class="footer__logo" />
         <p class="footer__name">BRAIN IN ACTION LAB</p>
         <p class="footer__lead">Dr. Silvia Seghezzi</p>
 

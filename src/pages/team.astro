@@ -4,6 +4,8 @@ import { getCollection, render } from 'astro:content';
 
 const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
 
+const base = import.meta.env.BASE_URL;
+
 const rendered = await Promise.all(
   team.map(async (member) => {
     const { Content } = await render(member);
@@ -24,7 +26,7 @@ const rendered = await Promise.all(
         <div class="team-card">
           {member.data.photo && (
             <div class="team-card__photo-wrap">
-              <img src={member.data.photo} alt={member.data.name} class="team-card__photo" loading="lazy" />
+              <img src={`${base}${member.data.photo.replace(/^\//, '')}`} alt={member.data.name} class="team-card__photo" loading="lazy" />
             </div>
           )}
           <div class="team-card__info">

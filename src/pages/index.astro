@@ -11,16 +11,18 @@ const bioExtendedParagraphs = (siteData.bio_extended as string)
   .split(/\n\s*\n/)
   .map((p: string) => p.trim())
   .filter(Boolean);
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Home">
   <!-- Hero -->
   <section class="hero">
-    <img src="/images/brain.svg" alt="" class="hero__brain" aria-hidden="true" />
+    <img src={`${base}images/brain.svg`} alt="" class="hero__brain" aria-hidden="true" />
     <div class="container">
       <div class="hero__content">
         <h1 class="hero__title">
-          <img src="/images/brain.svg" alt="" class="hero__title-logo" aria-hidden="true" />
+          <img src={`${base}images/brain.svg`} alt="" class="hero__title-logo" aria-hidden="true" />
           Welcome to the Brain in Action Lab
         </h1>
         <p class="hero__subtitle">
@@ -31,8 +33,8 @@ const bioExtendedParagraphs = (siteData.bio_extended as string)
         ))}
       </div>
       <div class="hero__cta">
-        <a href="/research/" class="btn btn--primary">Our Research</a>
-        <a href="/publications/" class="btn btn--outline">Publications</a>
+        <a href={`${base}research/`} class="btn btn--primary">Our Research</a>
+        <a href={`${base}publications/`} class="btn btn--outline">Publications</a>
       </div>
     </div>
   </section>
@@ -72,7 +74,7 @@ const bioExtendedParagraphs = (siteData.bio_extended as string)
         </div>
       </div>
       <div class="section__cta">
-        <a href="/research/" class="btn btn--outline">Learn more about our research</a>
+        <a href={`${base}research/`} class="btn btn--outline">Learn more about our research</a>
       </div>
     </div>
   </section>
@@ -99,7 +101,7 @@ const bioExtendedParagraphs = (siteData.bio_extended as string)
         ))}
       </div>
       <div class="section__cta">
-        <a href="/news/" class="btn btn--outline">All news</a>
+        <a href={`${base}news/`} class="btn btn--outline">All news</a>
       </div>
     </div>
   </section>

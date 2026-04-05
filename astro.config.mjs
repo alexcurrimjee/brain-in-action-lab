@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://alexcurrimjee.github.io/brain-in-action-lab/',
-
+  site: 'https://alexcurrimjee.github.io',
+  base: '/brain-in-action-lab',
   output: 'static',
 });
