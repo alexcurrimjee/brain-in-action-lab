@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: owner/brain-in-action-lab
+  repo: alexcurrimjee/brain-in-action-lab
   branch: main
 
 media_folder: "public/images"
