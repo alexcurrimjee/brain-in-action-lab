@@ -1,7 +1,7 @@
 ---
-name: "Dr Silvia Seghezzi"
-role: "Head of the Brain in Action Lab"
-photo: "/images/Silvia_Seghezzi.jpg"
+name: Dr. Silvia Seghezzi
+role: Head of the Brain in Action Lab
+photo: /images/Silvia_Seghezzi.jpg
 order: 1
 ---
 
