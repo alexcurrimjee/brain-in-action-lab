@@ -1,0 +1,171 @@
+---
+interface Props {
+  title: string;
+  authors: string[];
+  journal?: string;
+  conference?: string;
+  year: number;
+  doi?: string;
+  url?: string;
+  pdf?: string;
+  type: string;
+  status: string;
+  piName?: string;
+}
+
+const { title, authors, journal, conference, year, doi, url, pdf, type, status, piName = 'Seghezzi' } = Astro.props;
+
+const venue = journal || conference || '';
+
+function highlightPI(author: string) {
+  return author.includes(piName);
+}
+
+function typeLabel(t: string) {
+  const labels: Record<string, string> = {
+    journal: 'Journal Article',
+    conference: 'Conference Paper',
+    preprint: 'Preprint',
+    chapter: 'Book Chapter',
+    thesis: 'Thesis',
+    review: 'Review',
+  };
+  return labels[t] || t;
+}
+---
+
+<article class="pub">
+  <div class="pub__meta">
+    <span class="pub__year">{year}</span>
+    {status === 'under-review' && <span class="pub__badge pub__badge--review">Under Review</span>}
+    {status === 'preprint' && <span class="pub__badge pub__badge--preprint">Preprint</span>}
+  </div>
+  <div class="pub__content">
+    <h3 class="pub__title">{title}</h3>
+    <p class="pub__authors">
+      {authors.map((a, i) => (
+        <>
+          {highlightPI(a) ? <strong>{a}</strong> : <span>{a}</span>}
+          {i < authors.length - 1 && ', '}
+        </>
+      ))}
+    </p>
+    {venue && (
+      <p class="pub__venue">
+        <em>{venue}</em>
+        {year && <>, {year}</>}
+      </p>
+    )}
+    <div class="pub__links">
+      {doi && <a href={`https://doi.org/${doi}`} class="pub__link" target="_blank" rel="noopener">DOI</a>}
+      {url && <a href={url} class="pub__link" target="_blank" rel="noopener">Link</a>}
+      {pdf && <a href={pdf} class="pub__link" target="_blank" rel="noopener">PDF</a>}
+    </div>
+  </div>
+</article>
+
+<style>
+  .pub {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .pub:last-child {
+    border-bottom: none;
+  }
+
+  .pub__meta {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    min-width: 60px;
+  }
+
+  .pub__year {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pub__badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .pub__badge--review {
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  .pub__badge--preprint {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .pub__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pub__title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 0.35rem;
+  }
+
+  .pub__authors {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.25rem;
+    line-height: 1.6;
+  }
+
+  .pub__venue {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .pub__links {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .pub__link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    padding: 0.2em 0;
+    border-bottom: 1px solid transparent;
+  }
+
+  .pub__link:hover {
+    border-bottom-color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .pub {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pub__meta {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+</style>

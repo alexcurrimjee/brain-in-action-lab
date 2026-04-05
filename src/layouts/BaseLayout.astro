@@ -1,0 +1,157 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Brain in Action Lab — Birkbeck, University of London' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title} | Brain in Action Lab</title>
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-bg: #fff;
+    --color-bg-alt: #f9fafb;
+    --color-bg-dark: #171921;
+    --color-text: #1a1a2e;
+    --color-text-secondary: #4a4a68;
+
+    --color-text-dark: #ffffff;
+    --color-text-secondary-dark: #a1a1b2;
+
+    --color-accent: #3279F9;
+    --color-accent-hover: #2b4fda;
+    --color-accent-bg: #ecf2fb;
+    --color-border: #e2e4e9;
+    --color-border-light: #f0f1f4;
+
+    --button-bg-primary:#121317;
+    --button-bg-primary-hover:#45474d;
+    --button-text-primary:#ffffff;
+    --button-border-primary:#121317;
+
+    --button-bg-outline:#ffffff;
+    --button-bg-outline-hover:#f0f1f4;
+    --button-text-outline:#121317;
+    --button-border-outline:#e2e4e9;
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --max-width: 1120px;
+    --nav-height: 72px;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+    padding-top: var(--nav-height);
+    background: var(--color-bg);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    line-height: 1.3;
+    color: var(--color-text);
+  }
+
+  h1 { font-size: 2.5rem; font-weight: 600; }
+  h2 { font-size: 1.75rem; font-weight: 600; }
+  h3 { font-size: 1.25rem; font-weight: 600; }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .section {
+    padding: 4rem 1.5rem;
+  }
+
+  .section--alt {
+    background: var(--color-bg-alt);
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .page-header {
+    padding: 3rem 1.5rem 0rem;
+  }
+
+  .page-header h1 {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .page-header p {
+    max-width: var(--max-width);
+    margin: 0.5rem auto 0;
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.4rem; }
+    .section { padding: 2.5rem 1.25rem; }
+    .page-header { padding: 2.5rem 1.25rem 1.5rem; }
+  }
+</style>

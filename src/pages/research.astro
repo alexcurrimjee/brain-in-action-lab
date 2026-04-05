@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Research">
+  <div class="page-header">
+    <h1>Research</h1>
+    <p>An overview of our core research themes, reflecting the main directions of work in the Brain in Action Lab.</p>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="research-themes">
+
+        <article class="research-theme">
+          <div class="research-theme__label">Counterfactual Action</div>
+          <h2>How imagining alternative actions shapes memory and behaviour</h2>
+          <p>
+            Our central focus is <strong>counterfactual thinking</strong>, the ability to consider what one could have done differently. We investigate how representing alternative actions shapes action planning and systematically alters memory, leading to false recollections of actions that were never performed. This work reveals that the same processes that support flexible cognition and learning can also distort how past actions are remembered.
+          </p>
+        </article>
+
+        <article class="research-theme">
+          <div class="research-theme__label">Voluntary Action</div>
+          <h2>Neural mechanisms of internally generated behaviour</h2>
+          <p>
+            We study how voluntary actions are initiated and planned in the brain. Using EEG and fMRI, we investigate neural markers of voluntary action, including the readiness potential and beta-band activity, to understand how internally generated actions unfold over time. A key focus is how goals are represented, maintained, and transformed into structured sequences of behaviour.
+          </p>
+        </article>
+
+        <article class="research-theme">
+          <div class="research-theme__label">Sense of Agency</div>
+          <h2>The emergence of control over action across development</h2>
+          <p>
+            We investigate the <strong>sense of agency</strong>, the experience of being in control of one's actions and their consequences. Our work examines both the neural basis of agency and its developmental trajectory, asking how this fundamental aspect of conscious experience emerges and changes across the lifespan.
+          </p>
+        </article>
+
+        <article class="research-theme">
+          <div class="research-theme__label">Time & Decision</div>
+          <h2>Time perception as evidence accumulation</h2>
+          <p>
+            In collaboration with Dr Arslanova, we study <strong>time perception</strong> through the framework of evidence accumulation. We investigate how subjective time arises from decision-making processes and how it interacts with action planning, linking temporal experience to the same computational principles that guide choice.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="approach__title">Approach</h2>
+      <h3 class="approach__subtitle">Integrating behaviour, brain, and computation</h3>
+      <div class="approach__text">
+        <p>
+          Across these themes, we take an integrative and interdisciplinary approach, combining perspectives from cognitive neuroscience, psychology, computational modelling, and motor control. Using behavioural paradigms alongside neuroimaging methods such as EEG and fMRI, we examine how actions are initiated and structured, track neural markers of voluntary action, and study both adult and developmental populations.
+        </p>
+        <p>
+          We combine precise experimental design with advanced analytical techniques, including time-frequency analysis, multivariate decoding, and computational modelling, to understand how the brain generates, evaluates, and learns from action.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .research-themes {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .research-theme {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .research-theme:first-child {
+    padding-top: 0;
+  }
+
+  .research-theme:last-child {
+    border-bottom: none;
+  }
+
+  .research-theme__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+    background: var(--color-accent-bg);
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+  }
+
+  .research-theme h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .research-theme p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+
+  }
+
+  .approach__title {
+    margin-bottom: 0.25rem;
+  }
+
+  .approach__subtitle {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .approach__text p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+
+    margin-bottom: 1rem;
+  }
+
+  .approach__text p:last-child {
+    margin-bottom: 0;
+  }
+</style>

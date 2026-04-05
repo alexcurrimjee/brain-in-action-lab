@@ -1,0 +1,124 @@
+backend:
+  name: github
+  repo: owner/brain-in-action-lab
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "publications"
+    label: "Publications"
+    folder: "src/content/publications"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Authors", name: "authors", widget: "list", field: { widget: "string" } }
+      - { label: "Journal", name: "journal", widget: "string", required: false }
+      - { label: "Conference", name: "conference", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - { label: "DOI", name: "doi", widget: "string", required: false }
+      - { label: "URL", name: "url", widget: "string", required: false }
+      - { label: "PDF Link", name: "pdf", widget: "string", required: false }
+      - { label: "Abstract", name: "abstract", widget: "text", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false, field: { widget: "string" } }
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options: ["journal", "conference", "preprint", "chapter", "thesis", "review"]
+        default: "journal"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["published", "under-review", "preprint"]
+        default: "published"
+
+  - name: "talks"
+    label: "Talks & Presentations"
+    folder: "src/content/talks"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Event", name: "event", widget: "string" }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "URL", name: "url", widget: "string", required: false }
+      - { label: "Slides Link", name: "slides", widget: "string", required: false }
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options: ["invited", "conference", "seminar", "workshop"]
+        default: "conference"
+
+  - name: "teaching"
+    label: "Teaching"
+    folder: "src/content/teaching"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Course Title", name: "title", widget: "string" }
+      - { label: "Institution", name: "institution", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Years", name: "years", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+
+  - name: "news"
+    label: "News"
+    folder: "src/content/news"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "URL", name: "url", widget: "string", required: false }
+
+  - name: "team"
+    label: "Team Members"
+    folder: "src/content/team"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 99 }
+      - { label: "Bio", name: "body", widget: "markdown" }
+
+  - name: "site_config"
+    label: "Site Settings"
+    files:
+      - label: "About / Bio"
+        name: "site"
+        file: "src/data/site.yaml"
+        fields:
+          - { label: "Lab Name", name: "name", widget: "string" }
+          - { label: "PI Name", name: "pi", widget: "string" }
+          - { label: "Title / Position", name: "title", widget: "string" }
+          - { label: "Institution", name: "institution", widget: "string" }
+          - { label: "Photo", name: "photo", widget: "image" }
+          - { label: "Short Bio", name: "bio", widget: "text" }
+          - { label: "Extended Bio", name: "bio_extended", widget: "text" }
+          - { label: "Email", name: "email", widget: "string" }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "Line 1", name: "line1", widget: "string" }
+              - { label: "Line 2", name: "line2", widget: "string" }
+              - { label: "Line 3", name: "line3", widget: "string" }
+              - { label: "Office", name: "office", widget: "string" }
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }

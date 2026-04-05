@@ -1,0 +1,24 @@
+name: "Brain in Action Lab"
+pi: "Dr Silvia Seghezzi"
+title: "Lecturer, School of Psychological Sciences"
+institution: "Birkbeck, University of London"
+photo: "/images/Silvia_Seghezzi.jpg"
+bio: |
+  The Brain in Action Lab is a research group based in London at Birkbeck, University of London. We study how the brain generates, selects, and evaluates action, and how these processes shape decision-making, memory, and conscious experience across the lifespan.
+bio_extended: |
+  Our central focus is counterfactual thinking, the brain's ability to construct alternative realities. We investigate how representing what could have been shapes what we do next, how we evaluate our choices, and how we remember the past. This work shows that the mechanisms that support flexible, goal-directed behaviour can also blur the boundary between imagined and performed actions, giving rise to false memories of actions that were never carried out.
+
+  Alongside this, we investigate related aspects of human cognition, including voluntary action, the sense of agency, and time perception. Together, these lines of work allow us to understand how actions are generated, experienced, and evaluated, and how these processes unfold across development.
+
+  We take an integrative and interdisciplinary approach, combining perspectives from cognitive neuroscience, psychology, and computational modelling. Using behavioural paradigms alongside neuroimaging methods such as EEG and fMRI, we examine how actions are initiated and structured, identify neural markers of voluntary action, and investigate these processes across adult and developmental populations.
+email: "s.seghezzi@bbk.ac.uk"
+address:
+  line1: "Birkbeck, University of London"
+  line2: "Malet Street, Bloomsbury"
+  line3: "London WC1E 7HX"
+  office: "517b"
+links:
+  - label: "Google Scholar"
+    url: "https://scholar.google.co.uk/citations?user=7M2d-DsAAAAJ&hl=en&oi=ao"
+  - label: "Email"
+    url: "mailto:s.seghezzi@bbk.ac.uk"

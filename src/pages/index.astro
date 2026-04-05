@@ -1,0 +1,308 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import yaml from 'js-yaml';
+import { readFileSync } from 'fs';
+
+const siteData = yaml.load(readFileSync('src/data/site.yaml', 'utf-8')) as any;
+const news = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+
+const bioExtendedParagraphs = (siteData.bio_extended as string)
+  .split(/\n\s*\n/)
+  .map((p: string) => p.trim())
+  .filter(Boolean);
+---
+
+<BaseLayout title="Home">
+  <!-- Hero -->
+  <section class="hero">
+    <img src="/images/brain.svg" alt="" class="hero__brain" aria-hidden="true" />
+    <div class="container">
+      <div class="hero__content">
+        <h1 class="hero__title">
+          <img src="/images/brain.svg" alt="" class="hero__title-logo" aria-hidden="true" />
+          Welcome to the Brain in Action Lab
+        </h1>
+        <p class="hero__subtitle">
+          {siteData.bio}
+        </p>
+        {bioExtendedParagraphs.map((p: string) => (
+          <p class="hero__subtitle_extended">{p}</p>
+        ))}
+      </div>
+      <div class="hero__cta">
+        <a href="/research/" class="btn btn--primary">Our Research</a>
+        <a href="/publications/" class="btn btn--outline">Publications</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research themes preview -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">Research Themes</h2>
+      <div class="themes">
+        <div class="theme">
+          <div class="theme__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+          </div>
+          <h3>Counterfactual Action</h3>
+          <p>How imagining alternative actions shapes memory and behaviour</p>
+        </div>
+        <div class="theme">
+          <div class="theme__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"></path></svg>
+          </div>
+          <h3>Voluntary Action</h3>
+          <p>Neural mechanisms of internally generated behaviour</p>
+        </div>
+        <div class="theme">
+          <div class="theme__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+          </div>
+          <h3>Sense of Agency</h3>
+          <p>The emergence of control over action across development</p>
+        </div>
+        <div class="theme">
+          <div class="theme__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3>Time & Decision</h3>
+          <p>Time perception as evidence accumulation</p>
+        </div>
+      </div>
+      <div class="section__cta">
+        <a href="/research/" class="btn btn--outline">Learn more about our research</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest news -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section__title">Latest News</h2>
+      <div class="news-list">
+        {news.map(item => (
+          <article class="news-item">
+            <time class="news-item__date" datetime={item.data.date.toISOString()}>
+              {item.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+            </time>
+            <h3 class="news-item__title">
+              {item.data.url ? (
+                <a href={item.data.url} target="_blank" rel="noopener">{item.data.title}</a>
+              ) : (
+                item.data.title
+              )}
+            </h3>
+            <p class="news-item__summary">{item.data.summary}</p>
+          </article>
+        ))}
+      </div>
+      <div class="section__cta">
+        <a href="/news/" class="btn btn--outline">All news</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 5rem 1.5rem 4rem;
+    background: linear-gradient(135deg, #fff 0%, #ebf0f4 100%);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .hero__brain {
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%) rotate(15deg);
+    width: 50%;
+    height: auto;
+    filter: grayscale(75%);
+    opacity: 0.05;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero__content {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__title-logo {
+    width: 64px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .hero__subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .hero__subtitle_extended {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 99px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--button-bg-primary);
+    color: white;
+    border: 1px solid var(--button-border-primary);
+  }
+
+  .btn--primary:hover {
+    background: var(--button-bg-primary-hover);
+    color: white;
+
+  }
+
+  .btn--outline {
+    border: 1px solid var(--button-border-outline);
+    background: var(--button-bg-outline);
+    color: var(--button-text-outline);
+  }
+
+  .btn--outline:hover {
+    background: var(--color-bg-alt);
+
+  }
+
+  .section__title {
+    margin-bottom: 2rem;
+  }
+
+  .section__cta {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .themes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .theme {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-radius: 16px;
+    transition: box-shadow 0.3s ease;
+  }
+
+
+  .theme__icon {
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+  }
+
+  .theme h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .theme p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .news-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .news-item:last-child {
+    border-bottom: none;
+  }
+
+  .news-item__date {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  .news-item__title {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0.4rem 0;
+  }
+
+  .news-item__summary {
+    font-size: 0.925rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 1.25rem 2.5rem;
+    }
+    .hero__brain {
+      width: 280px;
+      right: -10%;
+      opacity: 0.05;
+    }
+    .hero__title {
+      font-size: 2rem;
+    }
+    .themes {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
