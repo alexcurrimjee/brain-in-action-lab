@@ -1,7 +1,6 @@
 ---
 name: "Maia Armstrong"
 role: "PhD Candidate"
-title: "PhD Candidate"
 photo: "/images/Maia_Armstrong.png"
 order: 2
 ---

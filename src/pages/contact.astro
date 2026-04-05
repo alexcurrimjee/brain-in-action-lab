@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import yaml from 'js-yaml';
+import { readFileSync } from 'fs';
+
+const site = yaml.load(readFileSync('src/data/site.yaml', 'utf-8')) as any;
 ---
 
 <BaseLayout title="Contact">
@@ -13,16 +17,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="contact-block">
           <h2>Address</h2>
           <address>
-            <p>Birkbeck, University of London</p>
-            <p>Malet Street, Bloomsbury</p>
-            <p>London WC1E 7HX</p>
-            <p>Office: 517b</p>
+            <p>{site.address.line1}</p>
+            <p>{site.address.line2}</p>
+            <p>{site.address.line3}</p>
+            <p>Office: {site.address.office}</p>
           </address>
         </div>
 
         <div class="contact-block">
           <h2>Contact</h2>
-          <p><a href="mailto:s.seghezzi@bbk.ac.uk">s.seghezzi@bbk.ac.uk</a></p>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
           <p class="contact-note">
             If you are interested in joining the lab, please include a brief statement of your research interests and a CV.
           </p>
@@ -31,9 +35,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="contact-block">
           <h2>Links</h2>
           <ul class="link-list">
-            <li>
-              <a href="https://scholar.google.co.uk/citations?user=7M2d-DsAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
-            </li>
+            {site.links.map((link: any) => (
+              <li>
+                <a href={link.url} target="_blank" rel="noopener">{link.label}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -58,7 +64,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .contact-block h2 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
-    padding-bottom: 0.75rem;    
+    padding-bottom: 0.75rem;
   }
 
   .contact-block address {

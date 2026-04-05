@@ -1,0 +1,55 @@
+intro: "We are always interested in hearing from talented and highly motivated researchers who want to understand how the brain plans, selects, and evaluates action."
+description: "The Brain in Action Lab offers an interdisciplinary research environment combining behavioural experiments, EEG, and fMRI to investigate decision-making, voluntary action, and memory."
+contact_note: "If you are interested in joining the lab, please contact Dr Silvia Seghezzi with a brief statement of your research interests and a CV."
+
+opportunities:
+  - title: "Postdoctoral Researchers"
+    body: |
+      We welcome enquiries from prospective postdoctoral researchers interested in developing an independent research programme aligned with the lab's core themes, including voluntary action, counterfactual thinking, and the sense of agency.
+
+      We are particularly interested in candidates with a strong track record and clear research vision. The lab can support applications to competitive external fellowships, including:
+    list:
+      - "Marie Sklodowska-Curie Fellowships"
+      - "British Academy Postdoctoral Fellowships"
+      - "Leverhulme Trust Early Career Fellowships"
+    footer: "Prospective applicants are encouraged to get in touch well in advance to discuss potential projects and strategic fit."
+
+  - title: "PhD Students"
+    body: |
+      There are several routes to joining the lab as a PhD student.
+
+      We are affiliated with leading doctoral training programmes, including:
+    list:
+      - "BBSRC LIDo DTP"
+      - "UCL-Birkbeck MRC DTP"
+      - "ESRC UBEL DTP"
+    footer: "Admission to these programmes is highly competitive. We strongly encourage prospective applicants to contact us in advance to discuss project ideas and alignment with the lab's research. We are particularly interested in students with strong quantitative, computational, or methodological skills, and a clear interest in cognitive neuroscience."
+
+  - title: "Research Assistants"
+    body: |
+      Research Assistant positions are available periodically through externally funded projects, including EPS and other grants.
+
+      We seek candidates with strong organisational and analytical skills, and experience in one or more of the following:
+    list:
+      - "Behavioural experiment design"
+      - "EEG or fMRI data acquisition and analysis"
+      - "Programming (e.g. MATLAB, Python)"
+    footer: "These roles offer the opportunity to contribute to cutting-edge research and develop advanced technical expertise."
+
+  - title: "Internships and Visiting Students"
+    body: |
+      We are open to hosting visiting students and research interns as part of undergraduate or postgraduate programmes.
+
+      We are particularly interested in students who are proactive, engaged, and eager to gain hands-on research experience.
+
+      Please contact us with a brief description of your interests, your CV, and details of the proposed visit.
+
+contact_box:
+  heading: "Get in Touch"
+  text: "Please email Dr Silvia Seghezzi with:"
+  items:
+    - "A brief statement of research interests"
+    - "Your CV"
+    - "Any relevant links (e.g. publications, GitHub, Google Scholar)"
+  button_text: "Email Dr Seghezzi"
+  button_url: "mailto:s.seghezzi@bbk.ac.uk"

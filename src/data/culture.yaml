@@ -1,0 +1,28 @@
+intro: "The Brain in Action Lab aims to create an intellectually ambitious, collaborative, and supportive environment, where people feel comfortable asking questions, sharing ideas, and developing as independent researchers."
+
+values:
+  - title: "Think deeply and question everything"
+    description: "We encourage critical thinking at all stages of research. You should feel comfortable questioning assumptions, proposing new ideas, and challenging interpretations. Good science begins with curiosity and is sustained by engagement with the literature and ongoing discussion."
+  - title: "Be rigorous and transparent"
+    description: "Scientific integrity is central to our work. We value openness, honesty, and reproducibility. Mistakes are part of the process, but transparency is non-negotiable. Dr Silvia Seghezzi is the Birkbeck representative for the UK Reproducibility Network (UKRN), and our lab plays an active role in promoting open and reproducible science. These principles are embedded throughout our research, from study design and pre-registration to data sharing and transparent reporting."
+  - title: "Be collaborative"
+    description: "Research is a collective effort. We expect lab members to support one another, whether through feedback, sharing methods, or contributing to joint projects. A strong lab culture is built on mutual respect and generosity."
+
+diversity:
+  title: "Diversity and Inclusion"
+  paragraphs:
+    - "Our commitment to diversity is shaped by lived experience."
+    - "As a first-generation academic who grew up in Italy in a family where higher education was not part of the immediate environment, Dr Silvia Seghezzi is particularly aware of the barriers that can shape access to academia. This perspective informs our commitment to building a lab environment where talent is recognised independently of background, and where different paths into science are valued."
+    - "We recognise that academic trajectories are not always linear, and that students from underrepresented or non-traditional backgrounds may face additional challenges. We aim to create a space where individuals feel supported, respected, and able to contribute their perspectives."
+  practices:
+    - "Supporting students from diverse educational and cultural backgrounds"
+    - "Encouraging different perspectives and ways of thinking"
+    - "Making expectations clear and accessible"
+    - "Providing mentorship tailored to individual needs"
+  closing: "We believe that diversity strengthens science, not only by broadening participation, but by enriching the questions we ask and the ways we approach them."
+
+lab_life:
+  title: "Lab Life"
+  paragraphs:
+    - "We value a positive and respectful working environment. Collaboration, discussion, and informal interactions are an important part of scientific life."
+    - "We do not measure success by hours spent in the lab, but by engagement, responsibility, and contribution. We encourage a healthy balance between work and personal life, and we recognise that sustained, high-quality research requires well-being."

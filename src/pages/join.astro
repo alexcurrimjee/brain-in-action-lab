@@ -1,81 +1,52 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import yaml from 'js-yaml';
+import { readFileSync } from 'fs';
+
+const data = yaml.load(readFileSync('src/data/join.yaml', 'utf-8')) as any;
 ---
 
 <BaseLayout title="Join the Lab">
   <div class="page-header">
     <h1>Join the Lab</h1>
-    <p>We are always interested in hearing from talented and highly motivated researchers who want to understand how the brain plans, selects, and evaluates action.</p>
+    <p>{data.intro}</p>
   </div>
 
   <section class="section">
     <div class="container">
       <div class="prose">
-        <p>The Brain in Action Lab offers an interdisciplinary research environment combining behavioural experiments, EEG, and fMRI to investigate decision-making, voluntary action, and memory.</p>
-        <p>If you are interested in joining the lab, please contact <a href="mailto:s.seghezzi@bbk.ac.uk">Dr Silvia Seghezzi</a> with a brief statement of your research interests and a CV.</p>
+        <p>{data.description}</p>
+        <p>{data.contact_note}</p>
       </div>
 
       <div class="opportunities">
-        <div class="opportunity">
-          <h2>Postdoctoral Researchers</h2>
-          <p>We welcome enquiries from prospective postdoctoral researchers interested in developing an independent research programme aligned with the lab's core themes, including voluntary action, counterfactual thinking, and the sense of agency.</p>
-          <p>We are particularly interested in candidates with a strong track record and clear research vision. The lab can support applications to competitive external fellowships, including:</p>
-          <ul>
-            <li>Marie Sklodowska-Curie Fellowships</li>
-            <li>British Academy Postdoctoral Fellowships</li>
-            <li>Leverhulme Trust Early Career Fellowships</li>
-          </ul>
-          <p>Prospective applicants are encouraged to get in touch well in advance to discuss potential projects and strategic fit.</p>
-        </div>
-
-        <div class="opportunity">
-          <h2>PhD Students</h2>
-          <p>There are several routes to joining the lab as a PhD student.</p>
-          <h3>Doctoral Training Programmes</h3>
-          <p>We are affiliated with leading doctoral training programmes, including:</p>
-          <ul>
-            <li>BBSRC LIDo DTP</li>
-            <li>UCL--Birkbeck MRC DTP</li>
-            <li>ESRC UBEL DTP</li>
-          </ul>
-          <p>Admission to these programmes is highly competitive. We strongly encourage prospective applicants to contact us in advance to discuss project ideas and alignment with the lab's research.</p>
-          <h3>Additional Routes</h3>
-          <ul>
-            <li>Departmental studentships and demonstratorships</li>
-            <li>Studentships are available periodically through externally funded projects</li>
-          </ul>
-          <p>We are particularly interested in students with strong quantitative, computational, or methodological skills, and a clear interest in cognitive neuroscience.</p>
-        </div>
-
-        <div class="opportunity">
-          <h2>Research Assistants</h2>
-          <p>Research Assistant positions are available periodically through externally funded projects, including EPS and other grants.</p>
-          <p>We seek candidates with strong organisational and analytical skills, and experience in one or more of the following:</p>
-          <ul>
-            <li>Behavioural experiment design</li>
-            <li>EEG or fMRI data acquisition and analysis</li>
-            <li>Programming (e.g. MATLAB, Python)</li>
-          </ul>
-          <p>These roles offer the opportunity to contribute to cutting-edge research and develop advanced technical expertise.</p>
-        </div>
-
-        <div class="opportunity">
-          <h2>Internships and Visiting Students</h2>
-          <p>We are open to hosting visiting students and research interns as part of undergraduate or postgraduate programmes.</p>
-          <p>We are particularly interested in students who are proactive, engaged, and eager to gain hands-on research experience.</p>
-          <p>Please contact us with a brief description of your interests, your CV, and details of the proposed visit.</p>
-        </div>
+        {data.opportunities.map((opp: any) => (
+          <div class="opportunity">
+            <h2>{opp.title}</h2>
+            {opp.body.trim().split(/\n\s*\n/).map((p: string) => (
+              <p>{p.trim()}</p>
+            ))}
+            {opp.list && (
+              <ul>
+                {opp.list.map((item: string) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            )}
+            {opp.footer && <p>{opp.footer}</p>}
+          </div>
+        ))}
       </div>
 
       <div class="contact-box">
-        <h3>Get in Touch</h3>
-        <p>Please email <strong>Dr Silvia Seghezzi</strong> with:</p>
+        <h3>{data.contact_box.heading}</h3>
+        <p>{data.contact_box.text}</p>
         <ul>
-          <li>A brief statement of research interests</li>
-          <li>Your CV</li>
-          <li>Any relevant links (e.g. publications, GitHub, Google Scholar)</li>
+          {data.contact_box.items.map((item: string) => (
+            <li>{item}</li>
+          ))}
         </ul>
-        <a href="mailto:s.seghezzi@bbk.ac.uk" class="btn btn--primary">Email Dr Seghezzi</a>
+        <a href={data.contact_box.button_url} class="btn btn--primary">{data.contact_box.button_text}</a>
       </div>
     </div>
   </section>
@@ -106,13 +77,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 1rem;
   }
 
-  .opportunity h3 {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
-  }
-
   .opportunity p {
     font-size: 0.95rem;
     color: var(--color-text-secondary);
@@ -128,13 +92,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .contact-box {
-
     padding: 2rem;
     background: var(--color-bg-alt);
     border: 1px solid var(--color-border);
     border-radius: 8px;
     max-width: 560px;
-    margin: 3px auto 0;
+    margin: 3rem auto 0;
   }
 
   .contact-box h3 {

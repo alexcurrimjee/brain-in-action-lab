@@ -1,7 +1,6 @@
 ---
 name: "Weronika Domagala"
 role: "Research Assistant"
-title: "Research Assistant"
 photo: "/images/Weronika_Domagała.png"
 order: 4
 ---

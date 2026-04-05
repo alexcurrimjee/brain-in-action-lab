@@ -1,7 +1,6 @@
 ---
 name: "Mahnoor Tariq"
 role: "PhD Candidate"
-title: "PhD Candidate"
 photo: "/images/Mahnoor_Tariq.jpg"
 order: 3
 ---

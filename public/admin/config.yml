@@ -88,15 +88,14 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Role", name: "role", widget: "string" }
-      - { label: "Title", name: "title", widget: "string" }
       - { label: "Photo", name: "photo", widget: "image", required: false }
       - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 99 }
       - { label: "Bio", name: "body", widget: "markdown" }
 
-  - name: "site_config"
-    label: "Site Settings"
+  - name: "pages"
+    label: "Page Content"
     files:
-      - label: "About / Bio"
+      - label: "Site Settings"
         name: "site"
         file: "src/data/site.yaml"
         fields:
@@ -105,8 +104,8 @@ collections:
           - { label: "Title / Position", name: "title", widget: "string" }
           - { label: "Institution", name: "institution", widget: "string" }
           - { label: "Photo", name: "photo", widget: "image" }
-          - { label: "Short Bio", name: "bio", widget: "text" }
-          - { label: "Extended Bio", name: "bio_extended", widget: "text" }
+          - { label: "Short Bio (Homepage)", name: "bio", widget: "text" }
+          - { label: "Extended Bio (Homepage)", name: "bio_extended", widget: "text" }
           - { label: "Email", name: "email", widget: "string" }
           - label: "Address"
             name: "address"
@@ -122,3 +121,74 @@ collections:
             fields:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
+
+      - label: "Research Page"
+        name: "research"
+        file: "src/data/research.yaml"
+        fields:
+          - { label: "Page Intro", name: "intro", widget: "text" }
+          - label: "Research Themes"
+            name: "themes"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "Approach Section"
+            name: "approach"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { widget: "text" } }
+
+      - label: "Culture (Team Page)"
+        name: "culture"
+        file: "src/data/culture.yaml"
+        fields:
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Values"
+            name: "values"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "Diversity & Inclusion"
+            name: "diversity"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { widget: "text" } }
+              - { label: "Practices", name: "practices", widget: "list", field: { widget: "string" } }
+              - { label: "Closing Statement", name: "closing", widget: "text" }
+          - label: "Lab Life"
+            name: "lab_life"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { widget: "text" } }
+
+      - label: "Join the Lab Page"
+        name: "join"
+        file: "src/data/join.yaml"
+        fields:
+          - { label: "Page Intro", name: "intro", widget: "text" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Contact Note", name: "contact_note", widget: "text" }
+          - label: "Opportunities"
+            name: "opportunities"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - { label: "List Items", name: "list", widget: "list", required: false, field: { widget: "string" } }
+              - { label: "Footer Text", name: "footer", widget: "text", required: false }
+          - label: "Contact Box"
+            name: "contact_box"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Checklist Items", name: "items", widget: "list", field: { widget: "string" } }
+              - { label: "Button Text", name: "button_text", widget: "string" }
+              - { label: "Button URL", name: "button_url", widget: "string" }

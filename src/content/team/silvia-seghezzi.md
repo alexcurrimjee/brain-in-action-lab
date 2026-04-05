@@ -1,7 +1,6 @@
 ---
 name: "Dr Silvia Seghezzi"
 role: "Head of the Brain in Action Lab"
-title: "Lecturer, School of Psychological Sciences"
 photo: "/images/Silvia_Seghezzi.jpg"
 order: 1
 ---

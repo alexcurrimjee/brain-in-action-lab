@@ -1,0 +1,22 @@
+intro: "An overview of our core research themes, reflecting the main directions of work in the Brain in Action Lab."
+
+themes:
+  - label: "Counterfactual Action"
+    title: "How imagining alternative actions shapes memory and behaviour"
+    description: "Our central focus is counterfactual thinking, the ability to consider what one could have done differently. We investigate how representing alternative actions shapes action planning and systematically alters memory, leading to false recollections of actions that were never performed. This work reveals that the same processes that support flexible cognition and learning can also distort how past actions are remembered."
+  - label: "Voluntary Action"
+    title: "Neural mechanisms of internally generated behaviour"
+    description: "We study how voluntary actions are initiated and planned in the brain. Using EEG and fMRI, we investigate neural markers of voluntary action, including the readiness potential and beta-band activity, to understand how internally generated actions unfold over time. A key focus is how goals are represented, maintained, and transformed into structured sequences of behaviour."
+  - label: "Sense of Agency"
+    title: "The emergence of control over action across development"
+    description: "We investigate the sense of agency, the experience of being in control of one's actions and their consequences. Our work examines both the neural basis of agency and its developmental trajectory, asking how this fundamental aspect of conscious experience emerges and changes across the lifespan."
+  - label: "Time & Decision"
+    title: "Time perception as evidence accumulation"
+    description: "In collaboration with Dr Arslanova, we study time perception through the framework of evidence accumulation. We investigate how subjective time arises from decision-making processes and how it interacts with action planning, linking temporal experience to the same computational principles that guide choice."
+
+approach:
+  title: "Approach"
+  subtitle: "Integrating behaviour, brain, and computation"
+  paragraphs:
+    - "Across these themes, we take an integrative and interdisciplinary approach, combining perspectives from cognitive neuroscience, psychology, computational modelling, and motor control. Using behavioural paradigms alongside neuroimaging methods such as EEG and fMRI, we examine how actions are initiated and structured, track neural markers of voluntary action, and study both adult and developmental populations."
+    - "We combine precise experimental design with advanced analytical techniques, including time-frequency analysis, multivariate decoding, and computational modelling, to understand how the brain generates, evaluates, and learns from action."
