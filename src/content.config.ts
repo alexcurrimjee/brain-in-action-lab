@@ -32,17 +32,6 @@ const talks = defineCollection({
   }),
 });
 
-const teaching = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/teaching' }),
-  schema: z.object({
-    title: z.string(),
-    institution: z.string(),
-    role: z.string(),
-    years: z.string(),
-    description: z.string().optional(),
-  }),
-});
-
 const news = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/news' }),
   schema: z.object({
@@ -63,4 +52,4 @@ const team = defineCollection({
   }),
 });
 
-export const collections = { publications, talks, teaching, news, team };
+export const collections = { publications, talks, news, team };
