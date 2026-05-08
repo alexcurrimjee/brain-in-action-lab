@@ -1,9 +1,9 @@
 ---
-title: "Neural mechanisms of volitional problem solving"
+title: "Neural mechanisms of self-generated action sequences"
 authors: ["Seghezzi, S.", "Haggard, P."]
-journal: "eNeuro"
+journal: "Accepted for publication in eNeuro"
 year: 2025
 type: "journal"
-status: "under-review"
+status: "published"
 tags: ["volition", "problem solving", "fMRI"]
 ---
